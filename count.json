@@ -1,8 +1,27 @@
 {
     "nicosator94": {
-        "death": 0
-    },
-    "mattammat": {
-        "death": 0
+        "CountDeath": 4,
+        "Boss": {
+            "A": {
+                "CountDeath": 3,
+                "Status": "Start"
+            },
+            "B": {
+                "CountDeath": 0,
+                "Status": "Not start"
+            },
+            "C": {
+                "CountDeath": 0,
+                "Status": "Not start"
+            },
+            "D": {
+                "CountDeath": 0,
+                "Status": "Not start"
+            },
+            "Margit": {
+                "CountDeath": 0,
+                "Status": "Not start"
+            }
+        }
     }
 }
