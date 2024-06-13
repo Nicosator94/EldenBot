@@ -1,26 +1,14 @@
 {
     "nicosator94": {
-        "CountDeath": 4,
+        "CountDeath": 1,
         "Boss": {
-            "A": {
-                "CountDeath": 3,
+            "g": {
+                "CountDeath": 0,
+                "Status": "Not start"
+            },
+            "t": {
+                "CountDeath": 0,
                 "Status": "Start"
-            },
-            "B": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "C": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "D": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "Margit": {
-                "CountDeath": 0,
-                "Status": "Not start"
             }
         }
     }
