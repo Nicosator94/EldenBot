@@ -1,15 +1,15 @@
 from utils import *
 from disc_utils import *
 
-async def reset(ctx):
+async def remove(ctx):
 	but = Button()
 	await ctx.message.delete()
-	await ctx.send("Are you sure to reset ?", view=but)
+	await ctx.send("Are you sure to remove ?", view=but)
 	await but.wait()
 	if but.button_pressed == True:
-		data = getData()
+		data = get_data()
 		author = str(ctx.author)
 		if author in data:
 			del data[author]
-		await ctx.send("Your profile has been deleted", delete_after=3)
-		pushData(data)
+		await ctx.send("Your profile has been remove", delete_after=3)
+		push_data(data)

@@ -1,9 +1,12 @@
 import discord
 from discord.ext import commands
+from commands.create import *
 from commands.add import *
+from commands.remove import *
 from commands.add_boss import *
-from commands.reset import *
 from commands.start_boss import *
+from commands.pause_boss import *
+from commands.kill import *
 
 def main():
 
@@ -18,13 +21,17 @@ def main():
 	async def on_ready():
 		print(f"{bot.user.name} est prêt.")
 
+	@bot.command(name="create", help="Create your profile")
+	async def create_command(ctx):
+		await create(ctx)
+
 	@bot.command(name="add", help="Add death")
 	async def add_command(ctx):
 		await add(ctx)
 
-	@bot.command(name="reset", help="Reset profile")
-	async def reset_command(ctx):
-		await reset(ctx)
+	@bot.command(name="remove", help="Remove your profile")
+	async def remove_command(ctx):
+		await remove(ctx)
 
 	@bot.command(name="addboss",help="Add boss")
 	async def addboss_command(ctx, boss_name = None):
@@ -34,11 +41,13 @@ def main():
 	async def startboss_command(ctx, boss_name = None):
 		await startboss(ctx, boss_name)
 
-	# @bot.command(help="Pause boss")
-	# async def pauseboss(ctx, boss_name = None):
-	# 	if boss_name is None:
-	# 		await ctx.send("This command need name of the boss !")
-	# 		return
+	@bot.command(name="pauseboss", help="Pause boss")
+	async def pauseboss_command(ctx, boss_name = None):
+		await pauseboss(ctx, boss_name)
+
+	@bot.command(name="kill", help="Kill boss")
+	async def kill_command(ctx, boss_name = None):
+		await kill(ctx, boss_name)
 
 	@bot.event
 	async def on_message(message):

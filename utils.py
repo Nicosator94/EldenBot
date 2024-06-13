@@ -1,27 +1,27 @@
 import json
 
-def getData():
+def get_data():
 	with open("count.json", "r") as file:
 		data = json.load(file)
 		return data
 
-def pushData(data):
+def push_data(data):
 	with open("count.json", "w") as file:
 		json.dump(data, file, indent=4)
 
-def CreateNewPlayer(name, data):
+def create_new_player(name, data):
 	data[name] = {
 		"CountDeath": 0,
 		"Boss": {}
 	}
 
-def CreateNewBoss(boss, data):
+def create_boss(boss, data):
 	data["Boss"][boss] = {
 		"CountDeath": 0,
 		"Status": "Not start"
 	}
 
-def isStart(name, data):
+def is_start(name, data):
 	if name in data:
 		if "Boss" in data[name]:
 			for Boss in data[name]["Boss"]:
@@ -33,5 +33,5 @@ icons={
 	"Not start": "🛑",
 	"Start": "🟢",
 	"Pause": "⏸️",
-	"End": "✅"
+	"Win": "✅"
 }

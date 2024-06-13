@@ -1,15 +1,6 @@
 {
     "nicosator94": {
-        "CountDeath": 1,
-        "Boss": {
-            "g": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "t": {
-                "CountDeath": 0,
-                "Status": "Start"
-            }
-        }
+        "CountDeath": 3,
+        "Boss": {}
     }
 }
