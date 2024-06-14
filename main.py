@@ -3,10 +3,8 @@ from discord.ext import commands
 from commands.create import *
 from commands.add import *
 from commands.remove import *
-from commands.add_boss import *
-from commands.start_boss import *
-from commands.pause_boss import *
-from commands.kill import *
+from commands.boss import *
+from commands.list import *
 
 def main():
 
@@ -33,21 +31,28 @@ def main():
 	async def remove_command(ctx):
 		await remove(ctx)
 
-	@bot.command(name="addboss",help="Add boss")
-	async def addboss_command(ctx, boss_name = None):
-		await addboss(ctx, boss_name)
+	@bot.command(name="boss", help="Boss commands\nUsage: \n"
+		"- !boss add [name]: Add a new boss with the given name.\n"
+		"- !boss start [name]: Start the boss with the given name.\n"
+		"- !boss remove [name]: Remove the boss with the given name.")
+	async def boss_command(ctx, param = None, name = None):
+		if param is None or name is None:
+			await ctx.send("Invalid command !\n"
+				"Example of a valid command: !boss [param] [name].")
+			return
+		if param == "add":
+			await add_boss(ctx, name)
+		elif param == "start":
+			await start_boss(ctx, name)
+		elif param == "remove":
+			await remove_boss(ctx, name)
+		else:
+			await ctx.send("Invalid parameter !\nPlease use one of the following: add, start, remove.")
+			return
 
-	@bot.command(name="startboss", help="Start boss")
-	async def startboss_command(ctx, boss_name = None):
-		await startboss(ctx, boss_name)
-
-	@bot.command(name="pauseboss", help="Pause boss")
-	async def pauseboss_command(ctx, boss_name = None):
-		await pauseboss(ctx, boss_name)
-
-	@bot.command(name="kill", help="Kill boss")
-	async def kill_command(ctx, boss_name = None):
-		await kill(ctx, boss_name)
+	@bot.command(name="list", help="List of boss, death and status")
+	async def list_command(ctx):
+		await list(ctx)
 
 	@bot.event
 	async def on_message(message):

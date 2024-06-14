@@ -1,6 +1,10 @@
 from utils import *
 from disc_utils import *
 
+# ======================================
+# Function to create a profile
+# ======================================
+
 async def create(ctx):
 	data = get_data()
 	author = str(ctx.author)
