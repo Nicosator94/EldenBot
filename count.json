@@ -1,34 +1,9 @@
 {
     "nicosator94": {
-        "CountDeath": 62,
+        "CountDeath": 15,
         "Boss": {
-            "Margit": {
-                "CountDeath": 7,
-                "Status": "Kill"
-            }
-        }
-    },
-    "mattammat": {
-        "CountDeath": 27,
-        "Boss": {
-            "je suis une phrase \\n hihihi": {
+            "a": {
                 "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "caca": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "tyoyoyly": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "youpi": {
-                "CountDeath": 0,
-                "Status": "Not start"
-            },
-            "ftest": {
-                "CountDeath": 24,
                 "Status": "Kill"
             }
         }

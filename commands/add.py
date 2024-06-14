@@ -25,7 +25,8 @@ async def increase_death(ctx, data, author):
 		data[author]["Boss"][boss]["CountDeath"] += 1
 	push_data(data)
 	if data[author]["CountDeath"] % 5 == 0:
-		but=SimpleButton()
-		await ctx.send("10 Squats now !", view=but)
-		await but.wait()
+		btn = SimpleButton()
+		message = await ctx.send("10 Squats now !", view=btn)
+		btn.message = message
+		await btn.wait()
 		await ctx.send("Well done !")

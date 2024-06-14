@@ -27,21 +27,21 @@ async def start_boss(ctx, name):
 	if boss is False:
 		data[author]["Boss"][name]["Status"] = "Start"
 		push_data(data)
-		but = ProgressButton(ctx, author)
-		while but.button_pressed == None:
-			message = await ctx.send(f"{name} in progress", view=but)
-			but.message = message
-			await but.wait()
-			if but.button_pressed == "kill":
+		btn = ProgressButton(ctx, author)
+		while btn.button_pressed == None:
+			message = await ctx.send(f"{name} in progress", view=btn)
+			btn.message = message
+			await btn.wait()
+			if btn.button_pressed == "kill":
 				data = get_data()
 				data[author]["Boss"][name]["Status"] = "Kill"
 				push_data(data)
-			elif but.button_pressed == "pause":
+			elif btn.button_pressed == "pause":
 				data = get_data()
 				data[author]["Boss"][name]["Status"] = "Pause"
 				push_data(data)
 			else:
-				but = ProgressButton(ctx, author)
+				btn = ProgressButton(ctx, author)
 	else:
 		await ctx.send(f"{boss} is already in progress !")
 
@@ -53,10 +53,11 @@ async def remove_boss(ctx, name):
 	data, author = await validate_boss_and_data(ctx, name, False)
 	if data is None:
 		return
-	but = ConfirmationButton()
-	await ctx.send(f"Are you sure to remove {name} ?", view=but)
-	await but.wait()
-	if but.button_pressed == True:
+	btn = ConfirmationButton()
+	message = await ctx.send(f"Are you sure to remove {name} ?", view=btn)
+	btn.message = message
+	await btn.wait()
+	if btn.button_pressed == True:
 		author = str(ctx.author)
 		del data[author]["Boss"][name]
 		await ctx.send(f"{name} has been remove")

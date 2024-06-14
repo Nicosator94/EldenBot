@@ -1,27 +1,66 @@
+from typing import Any
 import discord
+from discord.ui.item import Item
+
+# ======================================
+# Simple Button
+# ======================================
 
 class SimpleButton(discord.ui.View):
 
+	def __init__(self):
+		super().__init__(timeout=900)
+
+	async def on_timeout(self):
+		for item in self.children:
+			item.disabled = True
+		await self.message.edit(view=self)
+
 	@discord.ui.button(style=discord.ButtonStyle.secondary, emoji="✅")
 	async def button_callback_success(self, interaction, button):
-		await interaction.message.delete()
+		self.message = interaction.message
+		for item in self.children:
+			item.disabled = True
+		await interaction.message.edit(view=self)
+		await interaction.response.defer()
 		self.stop()
+
+# ======================================
+# Confirmation Button
+# ======================================
 
 class ConfirmationButton(discord.ui.View):
 	def __init__(self):
-		super().__init__(timeout=60)
+		super().__init__(timeout=900)
 		self.button_pressed = False
+
+	async def on_timeout(self):
+		for item in self.children:
+			item.disabled = True
+		await self.message.edit(view=self)
 
 	@discord.ui.button(label="Yes", style=discord.ButtonStyle.success)
 	async def button_callback_success(self, interaction, button):
+		self.message = interaction.message
 		self.button_pressed = True
-		await interaction.message.delete()
+		for item in self.children:
+			item.disabled = True
+		await interaction.message.edit(view=self)
+		await interaction.response.defer()
 		self.stop()
 
 	@discord.ui.button(label="Cancel", style=discord.ButtonStyle.danger)
 	async def button_callback_danger(self, interaction, button):
-		await interaction.message.delete()
+		self.message = interaction.message
+		for item in self.children:
+			item.disabled = True
+		await interaction.message.edit(view=self)
+		await interaction.response.defer()
 		self.stop()
+
+# ======================================
+# Progress Button
+# ======================================
 
 class ProgressButton(discord.ui.View):
 	def __init__(self, ctx, author):
