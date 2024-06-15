@@ -30,7 +30,7 @@ async def start_boss(ctx, name):
 		push_data(data)
 		btn = ProgressButton(ctx, author)
 		while btn.button_pressed == None:
-			message = await ctx.send(f"{name} in progress", view=btn)
+			message = await ctx.author.send(f"{name} in progress", view=btn)
 			btn.message = message
 			await btn.wait()
 			if btn.button_pressed == "kill":
@@ -55,7 +55,7 @@ async def delete_boss(ctx, name):
 	if data is None:
 		return
 	btn = ConfirmationButton()
-	message = await ctx.send(f"Are you sure you want to delete {name} ?", view=btn)
+	message = await ctx.author.send(f"Are you sure you want to delete {name} ?", view=btn)
 	btn.message = message
 	await btn.wait()
 	if btn.button_pressed == True:

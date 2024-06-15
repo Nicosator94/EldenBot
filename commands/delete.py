@@ -12,7 +12,7 @@ async def delete(ctx):
 		await ctx.send("You don't have a profile")
 		return
 	btn = ConfirmationButton()
-	message = await ctx.send("Are you sure you want to delete your profile ?", view=btn)
+	message = await ctx.author.send("Are you sure you want to delete your profile ?", view=btn)
 	btn.message = message
 	await btn.wait()
 	if btn.button_pressed == True:
