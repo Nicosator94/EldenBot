@@ -13,9 +13,14 @@ async def list(ctx, name):
 	if author not in data:
 		await ctx.send(f"{author} doesn't exist")
 		return
-	description = author.capitalize() + " : **" + str(data[author]["CountDeath"]) + "** Deaths\n"
+	description = ""
+	other = 0
 	for boss in data[author]["Boss"]:
 		description += "᲼᲼- " + icons[data[author]["Boss"][boss].get("Status")] + " " + \
 		boss + " : **" + str(data[author]["Boss"][boss].get("CountDeath")) + "** Deaths\n"
-	embed = discord.Embed(title=author.capitalize() + "\'s list", color=0xffff00, description=description)
+		other += data[author]["Boss"][boss].get("CountDeath")
+	other = data[author]["CountDeath"] - other
+	description += "\n᲼᲼- Other : **" + str(other) + "** Deaths\n"
+	title = author.capitalize() + " : " + str(data[author]["CountDeath"]) + " Deaths"
+	embed = discord.Embed(title=title, color=0xffff00, description=description)
 	await ctx.send(embed=embed)

@@ -1,13 +1,21 @@
 {
     "nicosator94": {
-        "CountDeath": 19,
+        "CountDeath": 69,
         "Boss": {
             "Margit": {
                 "CountDeath": 16,
                 "Status": "Kill"
             },
             "Godrick": {
-                "CountDeath": 2,
+                "CountDeath": 23,
+                "Status": "Kill"
+            },
+            "Loup": {
+                "CountDeath": 23,
+                "Status": "Kill"
+            },
+            "Rennala": {
+                "CountDeath": 4,
                 "Status": "Pause"
             }
         }
