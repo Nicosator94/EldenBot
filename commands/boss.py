@@ -11,6 +11,7 @@ async def add_boss(ctx, name):
 		return
 	create_boss(name, data[author])
 	push_data(data)
+	await ctx.send(f"You have created {name}")
 
 # ======================================
 # Function to start a boss
@@ -24,7 +25,7 @@ async def start_boss(ctx, name):
 		await ctx.send(f"{name} is dead !")
 		return
 	boss = is_start(author, data)
-	if boss is False:
+	if boss is False or boss == name:
 		data[author]["Boss"][name]["Status"] = "Start"
 		push_data(data)
 		btn = ProgressButton(ctx, author)
@@ -46,19 +47,21 @@ async def start_boss(ctx, name):
 		await ctx.send(f"{boss} is already in progress !")
 
 # ======================================
-# Function to remove a boss
+# Function to delete a boss
 # ======================================
 
-async def remove_boss(ctx, name):
+async def delete_boss(ctx, name):
 	data, author = await validate_boss_and_data(ctx, name, False)
 	if data is None:
 		return
 	btn = ConfirmationButton()
-	message = await ctx.send(f"Are you sure to remove {name} ?", view=btn)
+	message = await ctx.send(f"Are you sure you want to delete {name} ?", view=btn)
 	btn.message = message
 	await btn.wait()
 	if btn.button_pressed == True:
 		author = str(ctx.author)
 		del data[author]["Boss"][name]
-		await ctx.send(f"{name} has been remove")
+		await ctx.send(f"{name} has been deleted")
 		push_data(data)
+	else:
+		await ctx.send("You canceled")

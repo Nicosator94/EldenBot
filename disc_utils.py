@@ -1,6 +1,4 @@
-from typing import Any
 import discord
-from discord.ui.item import Item
 
 # ======================================
 # Simple Button
@@ -72,10 +70,13 @@ class ProgressButton(discord.ui.View):
 	async def on_timeout(self):
 		await self.message.delete()
 
-	@discord.ui.button(label="⏸️", style=discord.ButtonStyle.secondary)
+	@discord.ui.button(label="Pause", style=discord.ButtonStyle.secondary)
 	async def button_callback_pause(self, interaction, button):
 		self.button_pressed = "pause"
-		await interaction.message.delete()
+		for item in self.children:
+			item.disabled = True
+		await self.message.edit(view=self)
+		await interaction.response.defer()
 		self.stop()
 
 	@discord.ui.button(label="Death", style=discord.ButtonStyle.danger)
@@ -87,11 +88,17 @@ class ProgressButton(discord.ui.View):
 		self.button_pressed = "death"
 		await interaction.response.defer()
 		data = get_data()
-		await increase_death(self.ctx, data, self.author)
+		is_squats = await increase_death(self.ctx, data, self.author)
 		push_data(data)
+		if is_squats is True:
+			await self.message.delete()
+			self.stop()
 
 	@discord.ui.button(label="✅", style=discord.ButtonStyle.success)
 	async def button_callback_kill(self, interaction, button):
 		self.button_pressed = "kill"
-		await interaction.message.delete()
+		for item in self.children:
+			item.disabled = True
+		await self.message.edit(view=self)
+		await interaction.response.defer()
 		self.stop()

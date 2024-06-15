@@ -8,7 +8,7 @@ async def add(ctx):
 	data = get_data()
 	author = str(ctx.author)
 	if author not in data:
-		await ctx.send("You don't have a profile !")
+		await ctx.send("You don't have a profile")
 		return
 	await increase_death(ctx, data, author)
 	push_data(data)
@@ -29,4 +29,5 @@ async def increase_death(ctx, data, author):
 		message = await ctx.send("10 Squats now !", view=btn)
 		btn.message = message
 		await btn.wait()
-		await ctx.send("Well done !")
+		return True
+	return False

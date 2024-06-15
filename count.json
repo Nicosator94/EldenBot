@@ -1,10 +1,14 @@
 {
     "nicosator94": {
-        "CountDeath": 15,
+        "CountDeath": 19,
         "Boss": {
-            "a": {
-                "CountDeath": 0,
+            "Margit": {
+                "CountDeath": 16,
                 "Status": "Kill"
+            },
+            "Godrick": {
+                "CountDeath": 2,
+                "Status": "Pause"
             }
         }
     }

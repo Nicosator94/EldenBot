@@ -10,6 +10,7 @@ async def create(ctx):
 	author = str(ctx.author)
 	if author not in data:
 		create_new_player(author, data)
+		await ctx.send("You have created your profile")
 	else:
-		await ctx.send("You already have a profile !")
+		await ctx.send("You already have a profile")
 	push_data(data)
