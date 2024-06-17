@@ -35,11 +35,16 @@ def main():
 	@bot.command(name="boss", help="Boss commands\nUsage: \n"
 		"- !boss add [name]: Add a new boss with the given name.\n"
 		"- !boss start [name]: Start the boss with the given name.\n"
-		"- !boss delete [name]: Delete the boss with the given name.")
-	async def boss_command(ctx, param = None, name = None):
+		"- !boss delete [name]: Delete the boss with the given name.\n"
+		"- !boss rename [name] [new_name]: Rename the boss with the given name with the given new name.")
+	async def boss_command(ctx, param = None, name = None, new_name = None):
 		if param is None or name is None:
 			await ctx.send("Invalid command !\n"
 				"Example of a valid command: !boss [param] [name].")
+			return
+		if param == "rename" and new_name is None:
+			await ctx.send("Invalid command !\n"
+				"Example of a valid command: !boss rename [name] [new_name].")
 			return
 		if param == "add":
 			await add_boss(ctx, name)
@@ -47,6 +52,8 @@ def main():
 			await start_boss(ctx, name)
 		elif param == "delete":
 			await delete_boss(ctx, name)
+		elif param == "rename":
+			await rename_boss(ctx, name, new_name)
 		else:
 			await ctx.send("Invalid parameter !\nPlease use one of the following: add, start, delete.")
 			return

@@ -65,3 +65,27 @@ async def delete_boss(ctx, name):
 		push_data(data)
 	else:
 		await ctx.send("You canceled")
+
+# ======================================
+# Function to rename a boss
+# ======================================
+
+async def rename_boss(ctx, name, new_name):
+	if new_name.replace(" ", "").isalpha() is False:
+		await ctx.send("The new name can only contain letters and spaces")
+		return
+	data, author = await validate_boss_and_data(ctx, name, False)
+	if data is None:
+		return
+	for boss in data[author]["Boss"]:
+		if boss == new_name:
+			await ctx.send(f"{new_name} already exists")
+			return
+		elif boss == name:
+			find = "\"" + name + "\": " + str(data[author]["Boss"][boss]).replace("\'", "\"")
+			replace = find.replace("\"" + name + "\": {", "\"" + new_name + "\": {")
+	new_data = json.dumps(data)
+	new_data = new_data.replace(find, replace)
+	data = json.loads(new_data)
+	push_data(data)
+	await ctx.send(f"You have correctly renamed {name} by {new_name}")
