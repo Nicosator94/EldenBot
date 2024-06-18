@@ -1,0 +1,40 @@
+{
+    "nicosator94": {
+        "Current": "SL1",
+        "Profiles": [
+            {
+                "Name": "SL1",
+                "Deaths": 69,
+                "Current": null,
+                "Bosses": [
+                    {
+                        "Name": "Margit",
+                        "Deaths": 16,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Godrick",
+                        "Deaths": 23,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Red Wolf",
+                        "Deaths": 23,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Rennala",
+                        "Deaths": 4,
+                        "Status": "Paused"
+                    }
+                ]
+            },
+            {
+                "Name": "DLC",
+                "Deaths": 0,
+                "Current": null,
+                "Bosses": []
+            }
+        ]
+    }
+}

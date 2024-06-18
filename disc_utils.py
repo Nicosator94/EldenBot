@@ -61,11 +61,10 @@ class ConfirmationButton(discord.ui.View):
 # ======================================
 
 class ProgressButton(discord.ui.View):
-	def __init__(self, ctx, author):
+	def __init__(self, ctx):
 		super().__init__(timeout=900)
 		self.button_pressed = None
 		self.ctx = ctx
-		self.author = author
 
 	async def on_timeout(self):
 		await self.message.delete()
@@ -81,15 +80,15 @@ class ProgressButton(discord.ui.View):
 
 	@discord.ui.button(label="Death", style=discord.ButtonStyle.danger)
 	async def button_callback_death(self, interaction, button):
-		from utils import get_data
-		from utils import push_data
+		from utils import get_data_user
+		from utils import get_profile
 		from commands.add import increase_death
 		self.message = interaction.message
 		self.button_pressed = "death"
 		await interaction.response.defer()
-		data = get_data()
-		is_squats = await increase_death(self.ctx, data, self.author)
-		push_data(data)
+		data, user = get_data_user(self.ctx.author)
+		profile = get_profile(data[user]["Current"], data[user])
+		is_squats = await increase_death(self.ctx, profile, data)
 		if is_squats is True:
 			await self.message.delete()
 			self.stop()

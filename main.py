@@ -1,10 +1,8 @@
 import discord
 from discord.ext import commands
-from commands.create import *
+from commands.profile import *
 from commands.add import *
-from commands.delete import *
 from commands.boss import *
-from commands.list import *
 from commands.clear import *
 
 def main():
@@ -20,47 +18,51 @@ def main():
 	async def on_ready():
 		print(f"{bot.user.name} est prêt.")
 
-	@bot.command(name="create", help="Create your profile")
-	async def create_command(ctx):
-		await create(ctx)
+	@bot.command(name="profile", help="Profile commands\nUsage: \n"
+		"- !profile create [name]: Create a new profile with the given name\n"
+		"- !profile rename [name] [new_name]: Rename the profile with the given name with the given new name\n"
+		"- !profile choose [name]: Choose the profile with the given name\n"
+		"- !profile delete [name]: Delete the profile with the given name\n"
+		"- !profile list: Shows a list including all profiles")
+	async def profile_command(ctx, param = None, name = None, new_name = None):
+		match param:
+			case "create":
+				await create_profile(ctx, name)
+			case "rename":
+				await rename_profile(ctx, name, new_name)
+			case "choose":
+				await choose_profile(ctx, name)
+			case "delete":
+				await delete_profile(ctx, name)
+			case "list":
+				await list_profile(ctx)
+			case _:
+				await ctx.send("Invalid command !\nTake a look at !help profile")
 
 	@bot.command(name="add", help="Add death")
 	async def add_command(ctx):
 		await add(ctx)
 
-	@bot.command(name="delete", help="Delete your profile")
-	async def delete_command(ctx):
-		await delete(ctx)
-
 	@bot.command(name="boss", help="Boss commands\nUsage: \n"
-		"- !boss add [name]: Add a new boss with the given name.\n"
-		"- !boss start [name]: Start the boss with the given name.\n"
-		"- !boss delete [name]: Delete the boss with the given name.\n"
-		"- !boss rename [name] [new_name]: Rename the boss with the given name with the given new name.")
+		"- !boss create [name]: Create a new boss with the given name\n"
+		"- !boss rename [name] [new_name]: Rename the boss with the given name with the given new name\n"
+		"- !boss start [name]: Start the boss with the given name\n"
+		"- !boss delete [name]: Delete the boss with the given name\n"
+		"- !boss list: Shows a list including all bosses")
 	async def boss_command(ctx, param = None, name = None, new_name = None):
-		if param is None or name is None:
-			await ctx.send("Invalid command !\n"
-				"Example of a valid command: !boss [param] [name].")
-			return
-		if param == "rename" and new_name is None:
-			await ctx.send("Invalid command !\n"
-				"Example of a valid command: !boss rename [name] [new_name].")
-			return
-		if param == "add":
-			await add_boss(ctx, name)
-		elif param == "start":
-			await start_boss(ctx, name)
-		elif param == "delete":
-			await delete_boss(ctx, name)
-		elif param == "rename":
-			await rename_boss(ctx, name, new_name)
-		else:
-			await ctx.send("Invalid parameter !\nPlease use one of the following: add, start, delete.")
-			return
-
-	@bot.command(name="list", help="List of boss, death and status, can take name as parameter")
-	async def list_command(ctx, name = None):
-		await list(ctx, name)
+		match param:
+			case "create":
+				await create_boss(ctx, name)
+			case "rename":
+				await rename_boss(ctx, name, new_name)
+			case "start":
+				await start_boss(ctx, name)
+			case "delete":
+				await delete_boss(ctx, name)
+			case "list":
+				await list_boss(ctx)
+			case _:
+				await ctx.send("Invalid command !\nTake a look at !help boss")
 
 	@bot.command(name="clear", help="Clear message with number")
 	async def clear_command(ctx, amount = None):

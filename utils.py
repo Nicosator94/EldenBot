@@ -1,50 +1,42 @@
 import json
 
 def get_data():
-	with open("count.json", "r") as file:
+	with open("elden.json", "r") as file:
 		data = json.load(file)
 		return data
 
 def push_data(data):
-	with open("count.json", "w") as file:
+	with open("elden.json", "w") as file:
 		json.dump(data, file, indent=4)
 
-def create_new_player(name, data):
+def create_new_user(name, data):
 	data[name] = {
-		"CountDeath": 0,
-		"Boss": {}
+		"Current": None,
+		"Profiles": []
 	}
+	push_data(data)
 
-def create_boss(boss, data):
-	data["Boss"][boss] = {
-		"CountDeath": 0,
-		"Status": "Pause"
-	}
-
-def is_start(name, data):
-	for boss in data[name]["Boss"]:
-		if data[name]["Boss"][boss]["Status"] == "Start":
-			return boss
-	return False
-
-async def validate_boss_and_data(ctx, name, check_for_in):
+def get_data_user(author):
 	data = get_data()
-	author = str(ctx.author)
-	if author not in data:
-		await ctx.send("You don't have a profile")
-		return None, None
-	if check_for_in is True:
-		if name in data[author]["Boss"]:
-			await ctx.send(f"{name} already exists")
-			return None, None
-	else:
-		if name not in data[author]["Boss"]:
-			await ctx.send(f"{name} doesn't exists")
-			return None, None
-	return data, author
+	user = str(author)
+	if user not in data:
+		create_new_user(user, data)
+	return data, user
+
+def get_profile(name, data):
+	for profile in data["Profiles"]:
+		if name == profile["Name"]:
+			return profile
+	return None
+
+def get_boss(name, profile):
+	for boss in profile["Bosses"]:
+		if name == boss["Name"]:
+			return boss
+	return None
 
 icons={
-	"Pause": "🛑",
-	"Start": "🟠",
-	"Kill": "✅"
+	"Paused": "🛑",
+	"Started": "🟠",
+	"Killed": "✅"
 }
