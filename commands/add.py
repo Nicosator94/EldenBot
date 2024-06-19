@@ -8,7 +8,7 @@ async def add(ctx):
 	data, user = get_data_user(ctx.author)
 	profile = get_profile(data[user]["Current"], data[user])
 	if profile is None:
-		await ctx.send("You do not have a chosen profile")
+		await embed_message(ctx, "Error !", "You do not have a chosen profile")
 		return
 	await increase_death(ctx, profile, data)
 
@@ -25,7 +25,7 @@ async def increase_death(ctx, profile, data):
 	push_data(data)
 	if profile["Deaths"] % 5 == 0:
 		btn = SimpleButton()
-		message = await ctx.send("10 Squats now !", view=btn)
+		message = await ctx.author.send("10 Squats now !", view=btn)
 		btn.message = message
 		await btn.wait()
 		return True

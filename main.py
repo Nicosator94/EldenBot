@@ -3,6 +3,7 @@ from discord.ext import commands
 from commands.profile import *
 from commands.add import *
 from commands.boss import *
+from commands.list import *
 from commands.clear import *
 
 def main():
@@ -35,9 +36,9 @@ def main():
 			case "delete":
 				await delete_profile(ctx, name)
 			case "list":
-				await list_profile(ctx)
+				await list_profile(ctx, None)
 			case _:
-				await ctx.send("Invalid command !\nTake a look at !help profile")
+				await embed_message(ctx, "Invalid command !", "Take a look at !help profile")
 
 	@bot.command(name="add", help="Add death")
 	async def add_command(ctx):
@@ -60,9 +61,16 @@ def main():
 			case "delete":
 				await delete_boss(ctx, name)
 			case "list":
-				await list_boss(ctx)
+				await list_boss(ctx, None)
 			case _:
-				await ctx.send("Invalid command !\nTake a look at !help boss")
+				await embed_message(ctx, "Invalid command !", "Take a look at !help boss")
+
+	@bot.command(name="list", help="List commands\nUsage: \n"
+		"- !list : Shows a list of users\n"
+		"- !list [user] : Shows a list of user profiles\n"
+		"- !list [user] [profile] : Shows a list of bosses from the user's profile")
+	async def list_command(ctx, user = None, profile = None):
+		await list(ctx, user, profile)
 
 	@bot.command(name="clear", help="Clear message with number")
 	async def clear_command(ctx, amount = None):

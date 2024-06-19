@@ -1,4 +1,5 @@
 import json
+import discord
 
 def get_data():
 	with open("elden.json", "r") as file:
@@ -34,6 +35,10 @@ def get_boss(name, profile):
 		if name == boss["Name"]:
 			return boss
 	return None
+
+async def embed_message(ctx, title, description):
+	embed = discord.Embed(title=title, color=0xffff00, description=description)
+	await ctx.send(embed=embed)
 
 icons={
 	"Paused": "🛑",
