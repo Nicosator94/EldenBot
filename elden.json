@@ -1,6 +1,6 @@
 {
     "nicosator94": {
-        "Current": "RL1",
+        "Current": "DLC",
         "Profiles": [
             {
                 "Name": "RL1",
@@ -41,9 +41,80 @@
             },
             {
                 "Name": "DLC",
-                "Deaths": 0,
+                "Deaths": 92,
                 "Current": null,
-                "Bosses": []
+                "Bosses": [
+                    {
+                        "Name": "Chevalier Solitaire",
+                        "Deaths": 8,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Lion dansant",
+                        "Deaths": 22,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Yosh",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Dragon Ancestral",
+                        "Deaths": 2,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Chevalier de la mort",
+                        "Deaths": 3,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Rellana",
+                        "Deaths": 20,
+                        "Status": "Paused"
+                    },
+                    {
+                        "Name": "Chef des d\u00e9mons sanglants",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Edredd",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Homme-dragon ancien",
+                        "Deaths": 2,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Dragon du pic",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Dragon Spectrales",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Garrew",
+                        "Deaths": 7,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Dragon du pic 2",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Senessax",
+                        "Deaths": 2,
+                        "Status": "Paused"
+                    }
+                ]
             }
         ]
     }
