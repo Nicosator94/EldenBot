@@ -41,7 +41,7 @@
             },
             {
                 "Name": "DLC",
-                "Deaths": 92,
+                "Deaths": 235,
                 "Current": null,
                 "Bosses": [
                     {
@@ -72,7 +72,7 @@
                     {
                         "Name": "Rellana",
                         "Deaths": 20,
-                        "Status": "Paused"
+                        "Status": "Killed"
                     },
                     {
                         "Name": "Chef des d\u00e9mons sanglants",
@@ -111,7 +111,132 @@
                     },
                     {
                         "Name": "Senessax",
+                        "Deaths": 13,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Bayle",
+                        "Deaths": 1,
+                        "Status": "Paused"
+                    },
+                    {
+                        "Name": "Ours \u00e9carlate",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Rugalea",
+                        "Deaths": 3,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Chevalier de la mort 2",
+                        "Deaths": 6,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Ralva",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Hippopotame",
                         "Deaths": 2,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Messmer",
+                        "Deaths": 20,
+                        "Status": "Paused"
+                    },
+                    {
+                        "Name": "Lion dansant 2",
+                        "Deaths": 8,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Romina",
+                        "Deaths": 6,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Marigga",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Dragon Spectrales 2",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Chevalier putride",
+                        "Deaths": 7,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Volatile",
+                        "Deaths": 3,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Larmoyeur",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Rakshasa",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Jori",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Labirith",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Avatar",
+                        "Deaths": 4,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Gaius",
+                        "Deaths": 12,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Sentinelle",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Sentinelle 2",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Creature Stellaire",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Metyr",
+                        "Deaths": 1,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Ymir",
+                        "Deaths": 0,
+                        "Status": "Killed"
+                    },
+                    {
+                        "Name": "Midra",
+                        "Deaths": 10,
                         "Status": "Paused"
                     }
                 ]
